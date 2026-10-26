@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gait Classifier</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Gait Classifier</h1>
+      <div id="conn" class="pill bad">connecting…</div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Current gait</h2>
+        <div id="untrained" class="hint">Record at least two activities below to train the models.</div>
+        <div class="models">
+          <div class="model">
+            <div class="model-name">Model 2 · all IMU outputs</div>
+            <div id="m2-label" class="big-label">–</div>
+            <div id="m2-votes" class="votes"></div>
+          </div>
+          <div class="model">
+            <div class="model-name">Model 1 · peak accel, <span id="m1-axis">?</span> axis only</div>
+            <div id="m1-label" class="big-label">–</div>
+            <div id="m1-votes" class="votes"></div>
+            <div class="small">current peak: <span id="peak">–</span> g</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Live sensor <span id="rate" class="small"></span></h2>
+        <div class="plot-title">Acceleration (g) <span class="legend"><i class="x"></i>x <i class="y"></i>y <i class="z"></i>z</span></div>
+        <canvas id="acc" height="140"></canvas>
+        <div class="plot-title">Rotation (°/s)</div>
+        <canvas id="gyro" height="140"></canvas>
+      </section>
+
+      <section class="card">
+        <h2>Record training data</h2>
+        <div class="row">
+          <label>Length (s) <input id="seconds" type="number" value="30" min="5" max="300" /></label>
+          <label>Countdown (s) <input id="countdown" type="number" value="5" min="0" max="60" /></label>
+        </div>
+        <div id="record-buttons" class="record-buttons"></div>
+        <div id="rec-status" class="rec-status hidden">
+          <div id="rec-text"></div>
+          <div class="bar"><div id="rec-bar"></div></div>
+          <button id="cancel" class="secondary">Cancel</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Model accuracy</h2>
+        <p class="small">Blocked 5-fold cross-validation: each recording is split into 5 time blocks and each block is predicted by a model trained on the others.</p>
+        <div class="row">
+          <label>k <input id="k" type="number" value="5" min="1" max="25" /></label>
+          <label>Model 1 axis
+            <select id="axis">
+              <option value="auto">auto (best)</option>
+              <option value="x">x</option>
+              <option value="y">y</option>
+              <option value="z">z</option>
+            </select>
+          </label>
+          <button id="apply" class="secondary">Apply &amp; retrain</button>
+        </div>
+        <div id="accuracy"></div>
+      </section>
+
+      <section class="card">
+        <h2>Recordings</h2>
+        <div id="recordings"></div>
+      </section>
+    </main>
+
+    <script src="libs/socket.io.min.js"></script>
+    <script src="libs/arduino.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

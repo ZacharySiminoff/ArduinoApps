@@ -1,0 +1,17 @@
+# app.yaml: The main configuration file for your Arduino App.
+# This file describes the application's metadata and properties.
+
+# The user-visible name of the application.
+name: Gait Classifier
+
+# The icon for the application, can be an emoji or a short string.
+icon: 🏃
+
+description: Wearable MPU-6050 activity classifier (still / walk / run / bike) using two kNN models, with a web page for recording training data and watching the live result.
+
+# A list of network ports that the application exposes.
+ports: []
+
+# A list of bricks used by this application.
+bricks:
+  - arduino:web_ui

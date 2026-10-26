@@ -14,5 +14,5 @@ HOSTS = [
 USER = "arduino"        # login name on the board (leave as is)
 
 # Used by Tufts_WiFi.py to advertise the board on the network
-BOARD_NAME = "unoq"
-BOARD_IP = "192.168.1.50"
+BOARD_NAME = "MyBoard"
+BOARD_IP = "10.247.137.62"

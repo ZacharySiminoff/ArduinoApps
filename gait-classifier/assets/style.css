@@ -1,0 +1,113 @@
+:root {
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #1d2228;
+  --muted: #6b7480;
+  --line: #e3e6ea;
+  --accent: #008184;
+  --x: #0068c9;
+  --y: #ff9900;
+  --z: #e5383b;
+  --still: #7a8591;
+  --walk: #2a9d8f;
+  --run: #e76f51;
+  --bike: #6a4c93;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--accent);
+  color: #fff;
+}
+header h1 { margin: 0; font-size: 20px; }
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 12px 16px 40px;
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+.card h2 { margin: 0 0 10px; font-size: 16px; }
+
+.pill { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.2); }
+.pill.bad { background: #b00020; }
+
+.hint { color: var(--muted); margin-bottom: 8px; }
+.small { color: var(--muted); font-size: 13px; font-weight: normal; }
+.hidden { display: none !important; }
+
+.models { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .models { grid-template-columns: 1fr; } }
+.model-name { color: var(--muted); font-size: 13px; }
+.big-label { font-size: 40px; font-weight: 700; text-transform: capitalize; margin: 2px 0 6px; }
+
+.votes .vote { display: grid; grid-template-columns: 48px 1fr 40px; align-items: center; gap: 8px; font-size: 13px; margin: 3px 0; }
+.votes .track { background: var(--line); border-radius: 4px; height: 10px; overflow: hidden; }
+.votes .fill { height: 100%; transition: width 0.3s; }
+
+canvas { width: 100%; display: block; background: #fafbfc; border-radius: 6px; }
+.plot-title { font-size: 13px; color: var(--muted); margin: 8px 0 4px; display: flex; justify-content: space-between; }
+.legend i { display: inline-block; width: 10px; height: 3px; margin: 0 3px 3px 8px; vertical-align: middle; }
+.legend .x { background: var(--x); }
+.legend .y { background: var(--y); }
+.legend .z { background: var(--z); }
+
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 10px; }
+label { display: flex; flex-direction: column; font-size: 13px; color: var(--muted); }
+input, select { font: inherit; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; width: 110px; }
+
+button {
+  font: inherit;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #fff;
+  background: var(--accent);
+}
+button.secondary { background: var(--line); color: var(--text); }
+button:disabled { opacity: 0.4; cursor: default; }
+
+.record-buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+@media (max-width: 600px) { .record-buttons { grid-template-columns: repeat(2, 1fr); } }
+.record-buttons button { padding: 14px 8px; text-transform: capitalize; }
+.record-buttons .count { display: block; font-size: 12px; opacity: 0.85; text-transform: none; }
+
+.rec-status { margin-top: 12px; display: grid; gap: 8px; }
+#rec-text { font-size: 18px; font-weight: 600; }
+.bar { background: var(--line); height: 12px; border-radius: 6px; overflow: hidden; }
+#rec-bar { background: var(--accent); height: 100%; width: 0; }
+
+.acc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .acc-grid { grid-template-columns: 1fr; } }
+.acc-value { font-size: 28px; font-weight: 700; }
+table.cm { border-collapse: collapse; font-size: 12px; margin-top: 6px; }
+table.cm th, table.cm td { padding: 4px 6px; text-align: center; border: 1px solid var(--line); }
+table.cm th { color: var(--muted); font-weight: 500; text-transform: capitalize; }
+
+.rec-list { width: 100%; border-collapse: collapse; font-size: 13px; }
+.rec-list td { padding: 6px 4px; border-bottom: 1px solid var(--line); }
+.rec-list td:last-child { text-align: right; white-space: nowrap; }
+.rec-list a { color: var(--accent); margin-right: 10px; }
+.rec-list button { padding: 4px 10px; font-size: 12px; }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 999px; color: #fff; font-size: 12px; text-transform: capitalize; }
