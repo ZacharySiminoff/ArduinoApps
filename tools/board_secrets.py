@@ -7,7 +7,8 @@ you edit that copy. Updates from GitHub never overwrite board_secrets.py.
 # Addresses to try, in order, when the board isn't plugged in over USB.
 # Find the board's IP by running:  python3 deploy.py --cmd "hostname -I"
 HOSTS = [
-    "192.168.0.79",     # the board's IP address on your WiFi
+    "10.247.137.62",    # the board's IP address on Tufts WiFi
+    "192.168.0.79",     # the board's IP address on home WiFi
     "MyBoard.local",       # board name + .local (works on many home networks)
 ]
 
